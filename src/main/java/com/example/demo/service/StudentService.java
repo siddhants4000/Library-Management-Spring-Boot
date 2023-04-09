@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,12 +23,13 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public WrapperResponse<StudentResponse> getAllStudents() {
-        return (WrapperResponse<StudentResponse>) studentRepository.findAll();
-    }
+//    public WrapperResponse<StudentResponse> getAllStudents() {
+//        return (WrapperResponse<StudentResponse>) studentRepository.findAll();
+//    }
 
     public WrapperResponse<StudentResponse> addStudent(StudentRequest studentRequest) {
-        if (!studentRepository.findByRoll(studentRequest.getRoll())) {
+        Student newStudent= studentRepository.findByRoll(studentRequest.getRoll());
+        if (Objects.isNull(newStudent)) {
             studentRepository.save(studentRequest);
             return WrapperResponse.<StudentResponse>builder()
                     .data(new StudentResponse(studentRequest.getId(), studentRequest.getName(), studentRequest.getRoll()))

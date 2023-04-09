@@ -20,9 +20,9 @@ public class StudentController {
         return studentService.addStudent(studentRequest);
     }
 
-    @GetMapping("/all")
-    public WrapperResponse<StudentResponse> displayAllStudents() {
-        return studentService.getAllStudents();
-    }
+//    @GetMapping("/all")
+//    public WrapperResponse<StudentResponse> displayAllStudents() {
+//        return studentService.getAllStudents();
+//    }
 
 }
