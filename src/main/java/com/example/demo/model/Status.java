@@ -10,12 +10,15 @@ import lombok.*;
 @Builder
 public class Status {
 
+    @Builder.Default
     @JsonProperty("message")
     private String message= "SUCCESS";
 
+    @Builder.Default
     @JsonProperty("code")
     private String code= "200";
 
+    @Builder.Default
     @JsonProperty("message")
     private Boolean success= true;
 }

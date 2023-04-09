@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Student;
+import com.example.demo.model.WrapperResponse;
+import com.example.demo.request.StudentRequest;
+import com.example.demo.response.StudentResponse;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +16,12 @@ public class StudentController {
     StudentService studentService;
 
     @PostMapping("/add")
-    public String addStudent(@RequestBody Student student) {
-        return studentService.addStudent(student);
+    public WrapperResponse<StudentResponse> addStudent(@RequestBody StudentRequest studentRequest) {
+        return studentService.addStudent(studentRequest);
     }
 
     @GetMapping("/all")
-    public Iterable<Student> displayAllStudents() {
+    public WrapperResponse<StudentResponse> displayAllStudents() {
         return studentService.getAllStudents();
     }
 

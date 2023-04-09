@@ -17,11 +17,11 @@ import javax.persistence.*;
 public class Student {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "author")
+    @Column(name = "id")
     private int id;
 
     @NotNull
-    @Column(name = "author")
+    @Column(name = "name")
     private String name;
 
     @Id
