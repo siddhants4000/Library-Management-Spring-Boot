@@ -12,18 +12,20 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BookAllocationRequest {
+@Entity
+@Table(name = "bookAllocation")
+public class BookAllocation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonProperty("id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
     @NotNull
-    @JsonProperty("student")
+    @Column(name = "student")
     private Student student;
 
     @NotNull
-    @JsonProperty("book")
+    @Column(name = "book")
     private Book book;
 }

@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -7,26 +7,28 @@ import org.jetbrains.annotations.NotNull;
 import javax.persistence.*;
 
 @Data
-@Setter
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Builder
-@Entity
-@Table(name = "student")
-public class Student {
+public class BookRequest {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "author")
+    @JsonProperty("id")
     private int id;
 
     @NotNull
-    @Column(name = "author")
+    @JsonProperty("name")
     private String name;
+
+    @NotNull
+    @JsonProperty("author")
+    private String author;
 
     @Id
     @NotNull
-    @Column(name = "roll")
-    private String roll;
-
+    @JsonProperty("book_id")
+    private String bookId;
+    
 }

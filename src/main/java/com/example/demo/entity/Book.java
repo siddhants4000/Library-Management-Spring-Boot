@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
@@ -14,17 +12,25 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Builder
+@Entity
+@Table(name = "book")
 public class Book {
 
-    @Id
-    @JsonProperty("id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
     @NotNull
-    @JsonProperty("name")
+    @Column(name = "name")
     private String name;
 
     @NotNull
-    @JsonProperty("author")
+    @Column(name = "author")
     private String author;
+
+    @Id
+    @NotNull
+    @Column(name = "book_id")
+    private String bookId;
+
 }

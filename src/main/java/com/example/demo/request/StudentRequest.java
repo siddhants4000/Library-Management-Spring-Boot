@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -12,21 +12,19 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(name = "student")
-public class Student {
+public class StudentRequest {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "author")
+    @JsonProperty("id")
     private int id;
 
     @NotNull
-    @Column(name = "author")
+    @JsonProperty("name")
     private String name;
 
     @Id
     @NotNull
-    @Column(name = "roll")
+    @JsonProperty("roll")
     private String roll;
 
 }
