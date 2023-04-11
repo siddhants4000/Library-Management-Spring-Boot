@@ -30,5 +30,9 @@ public class BookResponse {
     @NotNull
     @JsonProperty("book_id")
     private String bookId;
+
+    @NotNull
+    @JsonProperty("copies")
+    private Long copies;
     
 }

@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Book;
 import com.example.demo.entity.Student;
+import com.example.demo.model.WrapperResponse;
+import com.example.demo.request.BookRequest;
+import com.example.demo.response.BookResponse;
 import com.example.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +21,8 @@ public class BookController {
     BookService bookService;
 
     @PostMapping("/add")
-    public String addBook(@RequestBody Book book) {
-        return bookService.addBook(book);
+    public WrapperResponse<BookResponse> addBook(@RequestBody BookRequest bookRequest) {
+        return bookService.addBook(bookRequest);
     }
 
     @GetMapping("/all")

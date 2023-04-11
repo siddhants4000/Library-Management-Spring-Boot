@@ -1,5 +1,6 @@
 package com.example.demo.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
@@ -12,19 +13,17 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class StudentRequest {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonProperty("id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @NotNull
-    @JsonProperty("name")
     private String name;
 
     @Id
     @NotNull
-    @JsonProperty("roll")
     private String roll;
 
 }

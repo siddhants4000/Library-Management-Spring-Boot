@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -8,17 +9,15 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Status {
 
-    @Builder.Default
     @JsonProperty("message")
-    private String message= "SUCCESS";
+    private String message;
 
-    @Builder.Default
     @JsonProperty("code")
-    private String code= "200";
+    private String code;
 
-    @Builder.Default
     @JsonProperty("message")
-    private Boolean success= true;
+    private Boolean success;
 }

@@ -1,11 +1,12 @@
 package com.example.demo.repo;
 
-import com.example.demo.entity.Student;
+import com.example.demo.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student, Integer> {
+public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    Student findByRoll(String roll);
+    Book findByBookId(String bookId);
+
 }

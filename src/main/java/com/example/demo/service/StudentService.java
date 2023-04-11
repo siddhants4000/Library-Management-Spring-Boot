@@ -8,8 +8,10 @@ import com.example.demo.repo.StudentRepository;
 import com.example.demo.request.StudentRequest;
 import com.example.demo.response.StudentResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -23,17 +25,32 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-//    public WrapperResponse<StudentResponse> getAllStudents() {
-//        return (WrapperResponse<StudentResponse>) studentRepository.findAll();
-//    }
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
+    }
 
     public WrapperResponse<StudentResponse> addStudent(StudentRequest studentRequest) {
-        Student newStudent= studentRepository.findByRoll(studentRequest.getRoll());
-        if (Objects.isNull(newStudent)) {
-            studentRepository.save(studentRequest);
+        Student student= studentRepository.findByRoll(studentRequest.getRoll());
+        if (Objects.isNull(student)) {
+            Student newStudent= Student.builder()
+                    .name(studentRequest.getName())
+                    .roll(studentRequest.getRoll())
+                    .build();
+            Status resultStatus= Status.builder()
+                    .code(StatusCode.SUCCESS.getCode())
+                    .message("Student has been added successfully.")
+                    .success(Boolean.TRUE)
+                    .build();
+
+            studentRepository.save(newStudent);
+
             return WrapperResponse.<StudentResponse>builder()
-                    .data(new StudentResponse(studentRequest.getId(), studentRequest.getName(), studentRequest.getRoll()))
-                    .status(Status.builder().build())
+                    .data(StudentResponse.builder()
+                            .id(newStudent.getId())
+                            .name(newStudent.getName())
+                            .roll(newStudent.getRoll())
+                            .build())
+                    .status(resultStatus)
                     .build();
         } else {
             Status resultStatus= Status.builder()
