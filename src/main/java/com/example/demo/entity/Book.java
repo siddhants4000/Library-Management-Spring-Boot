@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.persistence.*;
 
@@ -34,7 +35,7 @@ public class Book {
     @Column(name = "book_id")
     private String bookId;
 
-    @JsonIgnore
+    @Nullable
     private Long copies;
 
 }

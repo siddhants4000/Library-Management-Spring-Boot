@@ -18,6 +18,6 @@ public class Status {
     @JsonProperty("code")
     private String code;
 
-    @JsonProperty("message")
+    @JsonProperty("success")
     private Boolean success;
 }

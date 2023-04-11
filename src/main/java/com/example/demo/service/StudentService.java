@@ -8,14 +8,10 @@ import com.example.demo.repo.StudentRepository;
 import com.example.demo.request.StudentRequest;
 import com.example.demo.response.StudentResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class StudentService {

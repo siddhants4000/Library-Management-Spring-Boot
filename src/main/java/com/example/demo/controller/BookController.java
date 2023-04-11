@@ -26,12 +26,12 @@ public class BookController {
     }
 
     @GetMapping("/all")
-    public LinkedHashMap<Book, Integer> displayAllBooks() {
+    public List<Book> displayAllBooks() {
         return bookService.getAllBooks();
     }
 
     @PostMapping("/search")
-    public String searchBook(@RequestBody Book book) {
-        return bookService.searchBook(book);
+    public WrapperResponse<BookResponse> searchBook(@RequestBody BookRequest bookRequest) {
+        return bookService.searchBook(bookRequest);
     }
 }
