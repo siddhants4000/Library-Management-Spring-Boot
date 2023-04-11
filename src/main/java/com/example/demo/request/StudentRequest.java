@@ -16,6 +16,7 @@ import javax.persistence.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StudentRequest {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 

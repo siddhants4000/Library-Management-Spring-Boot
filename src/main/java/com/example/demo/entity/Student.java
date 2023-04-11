@@ -17,16 +17,16 @@ import javax.persistence.*;
 public class Student {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "student_id")
     private int id;
 
     @NotNull
-    @Column(name = "name")
+    @Column(name = "student_name")
     private String name;
 
     @Id
     @NotNull
-    @Column(name = "roll")
+    @Column(name = "student_roll")
     private String roll;
 
 }

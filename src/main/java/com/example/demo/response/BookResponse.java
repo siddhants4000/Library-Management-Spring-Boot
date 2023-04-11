@@ -19,11 +19,11 @@ public class BookResponse {
     private int id;
 
     @NotNull
-    @JsonProperty("name")
+    @JsonProperty("book_name")
     private String name;
 
     @NotNull
-    @JsonProperty("author")
+    @JsonProperty("book_author")
     private String author;
 
     @Id

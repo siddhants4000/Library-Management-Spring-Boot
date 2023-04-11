@@ -19,12 +19,12 @@ public class StudentResponse {
     private int id;
 
     @NotNull
-    @JsonProperty("name")
+    @JsonProperty("student_name")
     private String name;
 
     @Id
     @NotNull
-    @JsonProperty("roll")
+    @JsonProperty("student_roll")
     private String roll;
 
 }

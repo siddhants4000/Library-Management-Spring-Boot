@@ -18,19 +18,19 @@ import javax.persistence.*;
 @Table(name = "book")
 public class Book {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
 
     @NotNull
-    @Column(name = "name")
+    @Column(name = "book_name")
     private String name;
 
     @NotNull
-    @Column(name = "author")
+    @Column(name = "book_author")
     private String author;
 
-    @Id
     @NotNull
     @Column(name = "book_id")
     private String bookId;

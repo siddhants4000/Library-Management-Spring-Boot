@@ -15,6 +15,7 @@ import javax.persistence.*;
 @Builder
 public class BookRequest {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
@@ -24,7 +25,6 @@ public class BookRequest {
     @NotNull
     private String author;
 
-    @Id
     @NotNull
     private String bookId;
 
