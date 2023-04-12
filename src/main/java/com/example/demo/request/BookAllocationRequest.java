@@ -1,5 +1,7 @@
 package com.example.demo.request;
 
+import com.example.demo.entity.Book;
+import com.example.demo.entity.Student;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
@@ -19,11 +21,10 @@ public class BookAllocationRequest {
     @JsonProperty("id")
     private int id;
 
-    @NotNull
     @JsonProperty("student")
     private StudentRequest studentRequest;
 
-    @NotNull
+
     @JsonProperty("book")
     private BookRequest bookRequest;
 }

@@ -18,6 +18,6 @@ public class BookAllocationController {
 
     @PostMapping("/")
     public String allocateBook(@RequestBody BookAllocationRequest bookAllocationRequest) {
-        return bookAllocationService.allocateBook(bookAllocationRequest.getStudentRequest(), bookAllocationRequest.getBookRequest());
+        return bookAllocationService.allocateBook(bookAllocationRequest);
     }
 }

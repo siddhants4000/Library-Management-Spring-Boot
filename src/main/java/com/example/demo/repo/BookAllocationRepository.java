@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookAllocationRepository extends JpaRepository<Student, Book> {
 
-    BookAllocation findByStudent(Student student);
+    BookAllocation findByRoll(Student student);
 }

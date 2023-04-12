@@ -16,16 +16,21 @@ import javax.persistence.*;
 @Table(name = "bookAllocation")
 public class BookAllocation {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
 
-    @Id
     @NotNull
-    @Column(name = "student")
+    @OneToOne
+    @MapsId("roll")
+    @JoinColumn(name = "student_roll")
     private Student student;
 
     @NotNull
-    @Column(name = "book")
+    @OneToOne
+    @MapsId("bookId")
+    @JoinColumn(name = "book_id")
     private Book book;
+
 }
