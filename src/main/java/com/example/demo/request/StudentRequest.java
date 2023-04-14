@@ -17,13 +17,12 @@ import javax.persistence.*;
 public class StudentRequest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotNull
     private String name;
 
-    @Id
     @NotNull
     private String roll;
 

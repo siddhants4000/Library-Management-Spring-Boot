@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Builder
 public class StudentResponse {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id")
     private int id;
 
@@ -22,7 +22,6 @@ public class StudentResponse {
     @JsonProperty("student_name")
     private String name;
 
-    @Id
     @NotNull
     @JsonProperty("student_roll")
     private String roll;

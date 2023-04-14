@@ -13,24 +13,22 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "bookAllocation")
+@Table(name = "book_allocation")
 public class BookAllocation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
     @NotNull
     @OneToOne
-    @MapsId("roll")
-    @JoinColumn(name = "student_roll")
+    @MapsId("id")
     private Student student;
 
     @NotNull
     @OneToOne
-    @MapsId("bookId")
-    @JoinColumn(name = "book_id")
+    @MapsId("id")
     private Book book;
 
 }

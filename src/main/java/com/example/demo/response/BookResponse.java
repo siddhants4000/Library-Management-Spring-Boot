@@ -14,7 +14,8 @@ import javax.persistence.*;
 @Builder
 public class BookResponse {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id")
     private int id;
 
@@ -26,7 +27,6 @@ public class BookResponse {
     @JsonProperty("book_author")
     private String author;
 
-    @Id
     @NotNull
     @JsonProperty("book_id")
     private String bookId;
