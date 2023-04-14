@@ -1,5 +1,7 @@
 package com.example.demo.response;
 
+import com.example.demo.request.BookRequest;
+import com.example.demo.request.StudentRequest;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
@@ -15,15 +17,15 @@ import javax.persistence.*;
 public class BookAllocationResponse {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id")
     private int id;
 
     @NotNull
     @JsonProperty("student")
-    private StudentResponse studentResponse;
+    private StudentRequest studentRequest;
 
     @NotNull
     @JsonProperty("book")
-    private BookResponse bookResponse;
+    private BookRequest bookRequest;
 }
