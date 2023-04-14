@@ -54,8 +54,8 @@ public class BookAllocationService {
         } else if(bookService.bookRepository.findAll().contains(book) && bookService.bookRepository.findByBookId(book.getBookId()).getCopies()>0 && Objects.isNull(bookAllocationRepository.findByStudent(student)) && studentService.studentRepository.findAll().contains(student)) {
             book.setCopies(book.getCopies()-1L);
             BookAllocation bookAllocation= BookAllocation.builder()
-                    .student(student)
-                    .book(book)
+                    .studentRoll(student.getRoll())
+                    .bookId(book.getBookId())
                     .build();
 
             Status resultStatus= Status.builder()
@@ -68,12 +68,10 @@ public class BookAllocationService {
             bookAllocationResult= WrapperResponse.<BookAllocationResponse>builder()
                     .data(BookAllocationResponse.builder()
                             .studentRequest(StudentRequest.builder()
-                                    .id(student.getId())
                                     .name(student.getName())
                                     .roll(student.getRoll())
                                     .build())
                             .bookRequest(BookRequest.builder()
-                                    .id(book.getId())
                                     .name(book.getName())
                                     .author(book.getAuthor())
                                     .bookId(book.getBookId())
