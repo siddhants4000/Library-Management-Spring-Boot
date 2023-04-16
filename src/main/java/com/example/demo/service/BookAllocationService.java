@@ -31,10 +31,9 @@ public class BookAllocationService {
     @Autowired
     BookAllocationRepository bookAllocationRepository;
 
-    LinkedHashMap<Student, Book> allocated= new LinkedHashMap<>();
     public WrapperResponse<BookAllocationResponse> allocateBook(BookAllocationRequest bookAllocationRequest) {
-        String bookId= bookAllocationRequest.getBookRequest().getBookId();
-        String studentRoll= bookAllocationRequest.getStudentRequest().getRoll();
+        String bookId= bookAllocationRequest.getBookId();
+        String studentRoll= bookAllocationRequest.getStudentRoll();
 
         Book book= bookService.bookRepository.findByBookId(bookId);
         Student student= studentService.studentRepository.findByRoll(studentRoll);
@@ -67,11 +66,13 @@ public class BookAllocationService {
             bookAllocationRepository.save(bookAllocation);
             bookAllocationResult= WrapperResponse.<BookAllocationResponse>builder()
                     .data(BookAllocationResponse.builder()
-                            .studentRequest(StudentRequest.builder()
+                            .studentResponse(StudentResponse.builder()
+                                    .id(student.getId())
                                     .name(student.getName())
                                     .roll(student.getRoll())
                                     .build())
-                            .bookRequest(BookRequest.builder()
+                            .bookResponse(BookResponse.builder()
+                                    .id(book.getId())
                                     .name(book.getName())
                                     .author(book.getAuthor())
                                     .bookId(book.getBookId())

@@ -23,9 +23,9 @@ public class BookAllocationResponse {
 
     @NotNull
     @JsonProperty("student")
-    private StudentRequest studentRequest;
+    private StudentResponse studentResponse;
 
     @NotNull
     @JsonProperty("book")
-    private BookRequest bookRequest;
+    private BookResponse bookResponse;
 }

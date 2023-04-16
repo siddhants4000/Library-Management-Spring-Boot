@@ -1,6 +1,7 @@
 package com.example.demo.request;
 
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 
 @Getter
@@ -11,8 +12,10 @@ import lombok.*;
 @Builder
 public class BookAllocationRequest {
 
-    private StudentRequest studentRequest;
+    @NotNull
+    private String studentRoll;
 
-    private BookRequest bookRequest;
+    @NotNull
+    private String bookId;
 
 }
