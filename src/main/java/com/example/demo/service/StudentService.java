@@ -26,11 +26,11 @@ public class StudentService {
     }
 
     public WrapperResponse<StudentResponse> addStudent(StudentRequest studentRequest) {
-        Student student= studentRepository.findByRoll(studentRequest.getRoll());
+        Student student= studentRepository.findByStudentRoll(studentRequest.getRoll());
         if (Objects.isNull(student)) {
             Student newStudent= Student.builder()
-                    .name(studentRequest.getName())
-                    .roll(studentRequest.getRoll())
+                    .studentName(studentRequest.getName())
+                    .studentRoll(studentRequest.getRoll())
                     .build();
             Status resultStatus= Status.builder()
                     .code(StatusCode.SUCCESS.getCode())
@@ -43,8 +43,8 @@ public class StudentService {
             return WrapperResponse.<StudentResponse>builder()
                     .data(StudentResponse.builder()
                             .id(newStudent.getId())
-                            .name(newStudent.getName())
-                            .roll(newStudent.getRoll())
+                            .name(newStudent.getStudentName())
+                            .roll(newStudent.getStudentRoll())
                             .build())
                     .status(resultStatus)
                     .build();

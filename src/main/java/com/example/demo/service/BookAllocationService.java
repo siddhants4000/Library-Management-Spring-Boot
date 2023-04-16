@@ -36,13 +36,13 @@ public class BookAllocationService {
         String studentRoll= bookAllocationRequest.getStudentRoll();
 
         Book book= bookService.bookRepository.findByBookId(bookId);
-        Student student= studentService.studentRepository.findByRoll(studentRoll);
+        Student student= studentService.studentRepository.findByStudentRoll(studentRoll);
 
         WrapperResponse bookAllocationResult= new WrapperResponse();
         if(!Objects.isNull(bookAllocationRepository.findByStudent(student))) {
             Status resultStatus= Status.builder()
                     .code(StatusCode.SUCCESS.getCode())
-                    .message("Book is already allocated to "+ student.getName()+" with roll number "+ student.getRoll())
+                    .message("Book is already allocated to "+ student.getStudentName()+" with roll number "+ student.getStudentRoll())
                     .success(Boolean.TRUE)
                     .build();
 
@@ -53,13 +53,13 @@ public class BookAllocationService {
         } else if(bookService.bookRepository.findAll().contains(book) && bookService.bookRepository.findByBookId(book.getBookId()).getCopies()>0 && Objects.isNull(bookAllocationRepository.findByStudent(student)) && studentService.studentRepository.findAll().contains(student)) {
             book.setCopies(book.getCopies()-1L);
             BookAllocation bookAllocation= BookAllocation.builder()
-                    .studentRoll(student.getRoll())
-                    .bookId(book.getBookId())
+                    .student(student)
+                    .book(book)
                     .build();
 
             Status resultStatus= Status.builder()
                     .code(StatusCode.SUCCESS.getCode())
-                    .message(book.getName()+ " is allocated to "+ student.getName()+" with roll number "+ student.getRoll())
+                    .message(book.getBookName()+ " is allocated to "+ student.getStudentName()+" with roll number "+ student.getStudentRoll())
                     .success(Boolean.TRUE)
                     .build();
 
@@ -68,13 +68,13 @@ public class BookAllocationService {
                     .data(BookAllocationResponse.builder()
                             .studentResponse(StudentResponse.builder()
                                     .id(student.getId())
-                                    .name(student.getName())
-                                    .roll(student.getRoll())
+                                    .name(student.getStudentName())
+                                    .roll(student.getStudentRoll())
                                     .build())
                             .bookResponse(BookResponse.builder()
                                     .id(book.getId())
-                                    .name(book.getName())
-                                    .author(book.getAuthor())
+                                    .name(book.getBookName())
+                                    .author(book.getBookAuthor())
                                     .bookId(book.getBookId())
                                     .copies(book.getCopies())
                                     .build())

@@ -17,15 +17,10 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "student_id")
     private int id;
 
-    @NotNull
-    @Column(name = "student_name")
-    private String name;
+    private String studentName;
 
-    @NotNull
-    @Column(name = "student_roll")
-    private String roll;
+    private String studentRoll;
 
 }

@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -14,27 +14,18 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "book_allocation")
-@JsonIgnoreProperties
 public class BookAllocation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    private Long id;
 
-    @JsonIgnoreProperties
-    @OneToOne
-    @MapsId("id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_roll", referencedColumnName = "id")
     private Student student;
 
-    @JsonIgnoreProperties
-    @OneToOne
-    @MapsId("id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
 
-    @Column(name = "student_roll")
-    private String studentRoll;
-
-    @Column(name = "book_id")
-    private String bookId;
 }

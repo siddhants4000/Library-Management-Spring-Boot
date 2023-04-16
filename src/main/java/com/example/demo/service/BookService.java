@@ -24,8 +24,8 @@ public class BookService {
         if(Objects.isNull(bookRepository.findByBookId(bookRequest.getBookId()))){
             bookRequest.setCopies(1L);
             Book newBook= Book.builder()
-                    .name(bookRequest.getName())
-                    .author(bookRequest.getAuthor())
+                    .bookName(bookRequest.getName())
+                    .bookAuthor(bookRequest.getAuthor())
                     .bookId(bookRequest.getBookId())
                     .copies(bookRequest.getCopies())
                     .build();
@@ -40,8 +40,8 @@ public class BookService {
             return WrapperResponse.<BookResponse>builder()
                     .data(BookResponse.builder()
                             .id(newBook.getId())
-                            .name(newBook.getName())
-                            .author(newBook.getAuthor())
+                            .name(newBook.getBookName())
+                            .author(newBook.getBookAuthor())
                             .bookId(newBook.getBookId())
                             .copies(newBook.getCopies())
                             .build())
@@ -61,8 +61,8 @@ public class BookService {
             return WrapperResponse.<BookResponse>builder()
                     .data(BookResponse.builder()
                             .id(newBook.getId())
-                            .name(newBook.getName())
-                            .author(newBook.getAuthor())
+                            .name(newBook.getBookName())
+                            .author(newBook.getBookAuthor())
                             .bookId(newBook.getBookId())
                             .copies(newBook.getCopies())
                             .build())
@@ -80,8 +80,8 @@ public class BookService {
         WrapperResponse bookResult= new WrapperResponse();
         try{
             Book newBook= Book.builder()
-                    .name(bookRequest.getName())
-                    .author(bookRequest.getAuthor())
+                    .bookName(bookRequest.getName())
+                    .bookAuthor(bookRequest.getAuthor())
                     .bookId(bookRequest.getBookId())
                     .copies(bookRequest.getCopies())
                     .build();
@@ -94,8 +94,8 @@ public class BookService {
                 bookResult= WrapperResponse.<BookResponse>builder()
                         .data(BookResponse.builder()
                                 .id(newBook.getId())
-                                .name(newBook.getName())
-                                .author(newBook.getAuthor())
+                                .name(newBook.getBookName())
+                                .author(newBook.getBookAuthor())
                                 .bookId(newBook.getBookId())
                                 .copies(newBook.getCopies())
                                 .build())

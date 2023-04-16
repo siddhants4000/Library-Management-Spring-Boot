@@ -20,22 +20,14 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    private Long id;
 
-    @NotNull
-    @Column(name = "book_name")
-    private String name;
+    private String bookName;
 
-    @NotNull
-    @Column(name = "book_author")
-    private String author;
+    private String bookAuthor;
 
-    @NotNull
-    @Column(name = "book_id")
     private String bookId;
 
-    @Nullable
     private Long copies;
 
 }
