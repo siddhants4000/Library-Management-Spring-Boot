@@ -17,12 +17,12 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public WrapperResponse<StudentResponse> addStudent(@RequestBody StudentRequest studentRequest) {
         return studentService.addStudent(studentRequest);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/admin/all")
     public List<Student> displayAllStudents() {
         return studentService.getAllStudents();
     }

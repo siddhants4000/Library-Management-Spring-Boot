@@ -17,7 +17,7 @@ public class BookAllocationController {
     @Autowired
     BookAllocationService bookAllocationService;
 
-    @PostMapping("/book")
+    @PostMapping("/admin/book")
     public WrapperResponse<BookAllocationResponse> allocateBook(@RequestBody BookAllocationRequest bookAllocationRequest) {
         return bookAllocationService.allocateBook(bookAllocationRequest);
     }

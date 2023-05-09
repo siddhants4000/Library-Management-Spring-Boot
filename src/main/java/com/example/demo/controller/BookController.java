@@ -17,7 +17,7 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public WrapperResponse<BookResponse> addBook(@RequestBody BookRequest bookRequest) {
         return bookService.addBook(bookRequest);
     }
